@@ -1,0 +1,45 @@
+{
+  "preferences": {
+    "theme": "light"
+  },
+  "expenses": [
+    {
+      "id": 1782285706306,
+      "month": "2026-01",
+      "receipts": []
+    },
+    {
+      "id": 1782285714104,
+      "month": "2026-02",
+      "receipts": [
+        {
+          "id": 1782285754247,
+          "description": " nndd",
+          "amount": 324,
+          "category": "food",
+          "timestamp": "2026-06-24T07:22:34.247Z"
+        }
+      ]
+    },
+    {
+      "id": 1782285720589,
+      "month": "2026-03",
+      "receipts": []
+    },
+    {
+      "id": 1782285729276,
+      "month": "2026-04",
+      "receipts": []
+    },
+    {
+      "id": 1782285734978,
+      "month": "2026-05",
+      "receipts": []
+    },
+    {
+      "id": 1782285742308,
+      "month": "2026-06",
+      "receipts": []
+    }
+  ]
+}
