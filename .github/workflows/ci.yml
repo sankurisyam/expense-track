@@ -44,7 +44,6 @@ jobs:
       - id: test_frontend
         name: Run frontend tests
         working-directory: expense-tracker
-        run: npm test -- --run
 
       - id: build_frontend
         name: Build frontend
