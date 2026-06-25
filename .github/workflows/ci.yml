@@ -20,33 +20,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: npm
           cache-dependency-path: |
             backend/package-lock.json
             expense-tracker/package-lock.json
 
-      - id: install_backend
-        name: Install backend dependencies
+      - name: Install backend dependencies
         working-directory: backend
         run: npm ci --omit=dev --no-audit --no-fund
 
-      - id: install_frontend
-        name: Install frontend dependencies
+      - name: Install frontend dependencies
         working-directory: expense-tracker
         run: npm ci --no-audit --no-fund
 
-      - id: lint_frontend
-        name: Lint frontend
+      - name: Lint frontend
         working-directory: expense-tracker
         run: npm run lint
 
-      - id: test_frontend
-        name: Run frontend tests
+      - name: Run frontend tests
         working-directory: expense-tracker
+        run: npm test -- --run
 
-      - id: build_frontend
-        name: Build frontend
+      - name: Build frontend
         working-directory: expense-tracker
         run: npm run build
 
@@ -56,28 +52,15 @@ jobs:
         env:
           WORKFLOW_NAME: ${{ github.workflow }}
           JOB_NAME: ${{ github.job }}
-          INSTALL_BACKEND_OUTCOME: ${{ steps.install_backend.outcome }}
-          INSTALL_FRONTEND_OUTCOME: ${{ steps.install_frontend.outcome }}
-          LINT_FRONTEND_OUTCOME: ${{ steps.lint_frontend.outcome }}
-          TEST_FRONTEND_OUTCOME: ${{ steps.test_frontend.outcome }}
-          BUILD_FRONTEND_OUTCOME: ${{ steps.build_frontend.outcome }}
         with:
           script: |
             const sha = context.sha;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const workflowName = process.env.WORKFLOW_NAME;
             const jobName = process.env.JOB_NAME;
-            const stepOutcomes = [
-              ["Install backend dependencies", process.env.INSTALL_BACKEND_OUTCOME],
-              ["Install frontend dependencies", process.env.INSTALL_FRONTEND_OUTCOME],
-              ["Lint frontend", process.env.LINT_FRONTEND_OUTCOME],
-              ["Run frontend tests", process.env.TEST_FRONTEND_OUTCOME],
-              ["Build frontend", process.env.BUILD_FRONTEND_OUTCOME]
-            ];
-            const failedStep = stepOutcomes.find(([, outcome]) => outcome === "failure")?.[0] || jobName;
-            const title = `${workflowName} failed in ${failedStep} on commit ${sha.slice(0, 7)}`;
+            const title = `${workflowName} failed in ${jobName} on commit ${sha.slice(0, 7)}`;
             const body = [
-              `The CI workflow failed in step \`${failedStep}\` within job \`${jobName}\` on commit \`${sha}\`.`,
+              `The CI workflow failed in job \`${jobName}\` on commit \`${sha}\`.`,
               ``,
               `Run: ${runUrl}`,
               ``,
