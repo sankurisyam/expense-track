@@ -1,57 +1,29 @@
 {
   "preferences": {
-    "theme": "light"
+    "theme": "dark"
   },
   "expenses": [
     {
-      "id": 1782285706306,
+      "id": 1782376334367,
       "month": "2026-01",
       "receipts": [
         {
-          "id": 1782369133378,
-          "description": "harsha bill",
-          "amount": 40000,
-          "category": "all",
-          "timestamp": "2026-06-25T06:32:13.378Z"
-        }
-      ]
-    },
-    {
-      "id": 1782285714104,
-      "month": "2026-02",
-      "receipts": [
-        {
-          "id": 1782285754247,
-          "description": " nndd",
-          "amount": 324,
+          "id": 1782376932153,
+          "description": "coffee",
+          "amount": 200,
           "category": "food",
-          "timestamp": "2026-06-24T07:22:34.247Z"
+          "timestamp": "2026-06-25T08:42:12.153Z"
         }
       ]
     },
     {
-      "id": 1782285720589,
+      "id": 1782376342003,
+      "month": "2026-02",
+      "receipts": []
+    },
+    {
+      "id": 1782376347917,
       "month": "2026-03",
-      "receipts": []
-    },
-    {
-      "id": 1782285729276,
-      "month": "2026-04",
-      "receipts": []
-    },
-    {
-      "id": 1782285734978,
-      "month": "2026-05",
-      "receipts": []
-    },
-    {
-      "id": 1782285742308,
-      "month": "2026-06",
-      "receipts": []
-    },
-    {
-      "id": 1782369110531,
-      "month": "2026-11",
       "receipts": []
     }
   ]

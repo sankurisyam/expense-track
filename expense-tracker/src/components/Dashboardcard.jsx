@@ -14,7 +14,7 @@ function Dashboardcard({ month, monthId, total, receiptCount, onDelete }) {
       </div>
       <div className="month-card-body">
         <span className="eyebrow">Monthly total</span>
-        <p>${Number(total).toFixed(2)}</p>
+        <p>{Number(total).toFixed(2)}</p>
       </div>
       <Link to={`/expenses/${monthId}`} className="button-link">
         View receipts
